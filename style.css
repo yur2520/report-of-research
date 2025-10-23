@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'SUITE Variable';
+    font-weight: 300 900;           
+    src: url('./SUITE-Variable.woff2') format('woff2-variations');
+}
+
+/* 커스텀 폰트 및 기본 설정 */
+body {
+    font-family: 'SUITE Variable', 'Noto Sans KR', 'Inter', sans-serif;
+    color: theme('colors.pastel-text');
+    word-break: keep-all; 
+}
+
+/* 탭 스크롤바 숨기기 */
+.tabs-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 새로운 탭 스타일 */
+.tab-button {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border: 1px solid #E5E7EB;
+    border-bottom: none;
+    background-color: #F3F4F6;
+}
+
+.tab-button.active-tab {
+    border-color: transparent;
+}
+
+/* 캐러셀 페이드 효과를 위한 CSS */
+.carousel-item {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.carousel-item.active {
+    opacity: 1;
+    position: static; 
+}
+.carousel-track-container {
+     position: relative;
+     height: 100%;
+}
+
+ .header-with-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    margin-bottom: 1.5rem; 
+}
+.header-with-button h2 {
+    margin-bottom: 0;
+    flex-grow: 1; 
+    text-align: center; 
+}
+.header-with-button .button-container {
+    flex-shrink: 0; 
+    margin-top: 0;
+}
+@media (max-width: 639px) { 
+    .header-with-button {
+        flex-direction: column;
+        align-items: center; 
+        gap: 0.5rem; 
+    }
+    .header-with-button h2 {
+        text-align: center; 
+        width: 100%;
+    }
+    .header-with-button .button-container {
+        width: 100%; 
+        text-align: center;
+    }
+}
+
+/* --- 탭 콘텐츠 색상 오버라이드 --- */
+
+/* [기존] pastel-primary 오버라이드 */
+.tab-content .bg-pastel-primary {
+    background-color: var(--active-color);
+}
+.tab-content .text-pastel-primary {
+    color: var(--active-color);
+}
+.tab-content .border-pastel-primary {
+    border-color: var(--active-color);
+}
+.tab-content .hover\:bg-pastel-hover:hover {
+    background-color: var(--hover-color);
+}
+.tab-content .focus\:ring-pastel-primary:focus {
+    --tw-ring-color: var(--active-color);
+}
+
+/* --- [NEW] 탭 콘텐츠 내부 카드/버튼(pastel-accent) 색상 오버라이드 --- */
+
+/* 카드 배경 (20% opacity) */
+.tab-content .bg-pastel-accent\/20 {
+    background-color: var(--card-bg-color); 
+}
+
+/* 버튼 배경 */
+.tab-content .bg-pastel-accent {
+    background-color: var(--active-color);
+}
+
+/* 버튼 호버 (hover:bg-green-500 오버라이드) */
+.tab-content .hover\:bg-green-500:hover {
+    background-color: var(--hover-color);
+}
+
+/* 버튼 포커스 링 */
+.tab-content .focus\:ring-pastel-accent:focus {
+    --tw-ring-color: var(--active-color);
+}
+
+#scroll-left, #scroll-right {
+    z-index: 10;
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.responsive-font {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
