@@ -67,8 +67,17 @@ function openTab(tabName, clickedButton) {
     });
 
     const selectedContent = document.getElementById(`content-${tabName}`);
+    const mainDetailsButton = document.getElementById('main-details-button');
+
     if (selectedContent) {
         selectedContent.classList.remove('hidden');
+        const detailsHref = selectedContent.getAttribute('data-details-href');
+        if (detailsHref && mainDetailsButton) {
+            mainDetailsButton.href = detailsHref;
+            mainDetailsButton.classList.remove('hidden');
+        } else if (mainDetailsButton) {
+            mainDetailsButton.classList.add('hidden');
+        }
     }
 
     if (clickedButton) {
